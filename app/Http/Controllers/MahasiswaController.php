@@ -9,10 +9,13 @@ use Illuminate\Http\Request;
 class MahasiswaController extends Controller
 {
     public function index()
-    {
-        $mahasiswas = Mahasiswa::with('user')->get();
-        return view('mahasiswa.index', compact('mahasiswas'));
-    }
+        {
+            $mahasiswas = Mahasiswa::with('user')
+                            ->latest()
+                            ->paginate(15);
+
+            return view('mahasiswa.index', compact('mahasiswas'));
+        }
 
     public function create()
     {

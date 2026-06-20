@@ -67,3 +67,26 @@ Route::middleware(['auth', 'role:mahasiswa'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+/*
+|--------------------------------------------------------------------------
+| Export Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get(
+    '/mahasiswa/export-excel',
+    [MahasiswaController::class,'exportExcel']
+    )->name('mahasiswa.export.excel');
+    
+    
+/*
+|--------------------------------------------------------------------------
+| Import Routes
+|--------------------------------------------------------------------------
+*/
+Route::post(
+    '/mahasiswa/import-excel',
+    [MahasiswaController::class,'importExcel']
+)->name('mahasiswa.import.excel');
