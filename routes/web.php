@@ -84,10 +84,21 @@ Route::get(
     '/dosen/export-excel',
     [DosenController::class,'exportExcel']
     )->name('dosen.export.excel');
+
 Route::get(
     '/matakuliah/export-excel',
     [MatakuliahController::class,'exportExcel']
     )->name('matakuliah.export.excel');
+
+Route::get(
+    '/jadwal/export-excel',
+    [JadwalController::class,'exportExcel']
+    )->name('jadwal.export.excel');
+
+Route::get(
+    '/krs/export-excel',
+    [KrsController::class,'exportExcel']
+    )->name('krs.export.excel');
 
     
 /*
@@ -109,3 +120,13 @@ Route::post(
     '/matakuliah/import-excel',
     [MatakuliahController::class,'importExcel']
 )->name('matakuliah.import.excel');
+
+Route::post(
+    '/jadwal/import-excel',
+    [JadwalController::class,'importExcel']
+)->name('jadwal.import.excel');
+
+Route::post(
+    '/krs/import-excel',
+    [KrsController::class,'importExcel']
+)->name('krs.import.excel');

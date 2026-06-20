@@ -12,8 +12,11 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::all();
-        return view('jadwal.index', compact('jadwal'));
+        $jadwal = Jadwal::
+                        latest()->
+                        paginate(15);
+
+            return view('jadwal.index', compact('jadwal'));
     }
 
     /**
