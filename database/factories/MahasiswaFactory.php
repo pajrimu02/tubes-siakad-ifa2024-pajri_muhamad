@@ -14,12 +14,12 @@ class MahasiswaFactory extends Factory
 {
     return [
         'user_id' => \App\Models\User::factory(),
-        'nim' => fake()->unique()->numerify('2023####'),
+        'nim' => fake()->unique()->numerify('####0#####'),
         'nama' => fake()->name(),
         'jk' => fake()->randomElement(['L','P']),
         'alamat' => fake()->address(),
         'no_hp' => fake()->phoneNumber(),
-        'angkatan' => '2023',
+        'angkatan' => fake()->numberBetween(2019, 2025),
     ];
 }
 }
