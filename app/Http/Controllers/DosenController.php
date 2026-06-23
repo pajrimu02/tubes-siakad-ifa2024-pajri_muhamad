@@ -16,7 +16,7 @@ class DosenController extends Controller
                             ->latest()
                             ->paginate(15);
 
-            return view('dosen.index', compact('dosens'));
+            return view('admin.dosen.index', compact('dosens'));
     }
 
     /**

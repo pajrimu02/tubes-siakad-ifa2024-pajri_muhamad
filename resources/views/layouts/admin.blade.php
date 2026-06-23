@@ -98,6 +98,7 @@
     <a href="/matakuliah" class="{{ request()->is('matakuliah*') ? 'active' : '' }}"><i class="fa fa-book"></i> Mata Kuliah</a>
     <a href="/jadwal" class="{{ request()->is('jadwal*') ? 'active' : '' }}"><i class="fa fa-calendar"></i> Jadwal</a>
     <a href="/krs" class="{{ request()->is('krs*') ? 'active' : '' }}"><i class="fa fa-file"></i> KRS</a>
+    <a href="/users" class="{{ request()->is('users*') ? 'active' : '' }}"><i class="fa fa-users"></i> Users</a>
 
     <!-- LOGOUT BAWAH -->
     <div class="bottom-logout px-3">

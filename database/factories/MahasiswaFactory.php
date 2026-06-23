@@ -3,8 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\Mahasiswa;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+
 /**
  * @extends Factory<Mahasiswa>
  */
@@ -13,7 +15,7 @@ class MahasiswaFactory extends Factory
    public function definition()
 {
     return [
-        'user_id' => \App\Models\User::factory(),
+        'user_id' => User::role('mahasiswa')->inRandomOrder()->first()?->id,
         'nim' => fake()->unique()->numerify('####0#####'),
         'nama' => fake()->name(),
         'jk' => fake()->randomElement(['L','P']),

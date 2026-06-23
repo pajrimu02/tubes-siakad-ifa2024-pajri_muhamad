@@ -16,7 +16,7 @@ class JadwalController extends Controller
                         latest()->
                         paginate(15);
 
-            return view('jadwal.index', compact('jadwal'));
+            return view('admin.jadwal.index', compact('jadwal'));
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// Admin Controllers 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DosenController;
@@ -8,21 +9,19 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KrsController;
+use App\Http\Controllers\UserController;
+// User Controllers
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\KrsController as UserKrsController;
+use App\Http\Controllers\User\JadwalController as UserJadwalController;
+use App\Http\Controllers\User\ProfilController as UserProfilController;
+use App\Http\Controllers\User\NilaiController as UserNilaiController;
+use App\Http\Controllers\User\PembayaranController;
+use Spatie\Permission\Models\Role;
 
-/*
-|--------------------------------------------------------------------------
-| Public
-|--------------------------------------------------------------------------
-*/
-Route::get('/', function () {
-    return view('welcome');
-});
+ 
+ 
 
-/*
-|--------------------------------------------------------------------------
-| Auth Dashboard (SATU SAJA)
-|--------------------------------------------------------------------------
-*/
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
     ->name('dashboard');
@@ -45,26 +44,56 @@ Route::middleware(['auth'])->group(function () {
 */
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])
+    ->name('admin.dashboard');
     Route::resource('mahasiswa', MahasiswaController::class);
     Route::resource('dosen', DosenController::class);
     Route::resource('matakuliah', MatakuliahController::class);
     Route::resource('jadwal', JadwalController::class);
     Route::resource('krs', KrsController::class);
+    Route::resource('users', UserController::class);
 
 });
 
 /*
 |--------------------------------------------------------------------------
-| Mahasiswa Routes
+| USER ROUTES (MAHASISWA)
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', 'role:mahasiswa'])->group(function () {
 
-    Route::get('/krs-mahasiswa', function () {
-        return "KRS Mahasiswa";
+Route::middleware(['auth', 'role:mahasiswa'])
+    ->prefix('user')
+    ->name('user.')
+    ->group(function () {
+
+        Route::get('/dashboard', [UserDashboardController::class, 'index'])
+            ->name('dashboard');
+
+        Route::get('/krs', [UserKrsController::class, 'index'])
+            ->name('krs.index');
+
+        Route::get('/krs/cetak', [UserKrsController::class, 'cetak'])
+        ->name('krs.cetak');
+
+        Route::get('/jadwal', [UserJadwalController::class, 'index'])
+            ->name('jadwal.index');
+
+        Route::get('/nilai', [UserNilaiController::class, 'index'])
+            ->name('nilai.index');
+
+        Route::get('/profil', [UserProfilController::class, 'index'])
+            ->name('profil.index');
+
+        Route::get('/profil/edit', [UserProfilController::class, 'edit'])
+        ->name('profil.edit');
+
+        Route::put('/profil', [UserProfilController::class, 'update'])
+        ->name('profil.update');
+
+        Route::get('/pembayaran', [PembayaranController::class, 'index'])
+            ->name('pembayaran.index');
+
     });
-
-});
 
 require __DIR__.'/auth.php';
 
@@ -100,6 +129,10 @@ Route::get(
     [KrsController::class,'exportExcel']
     )->name('krs.export.excel');
 
+Route::get(
+    '/user/export-excel',
+    [UserController::class,'exportExcel']
+    )->name('users.export.excel');
     
 /*
 |--------------------------------------------------------------------------
@@ -130,3 +163,8 @@ Route::post(
     '/krs/import-excel',
     [KrsController::class,'importExcel']
 )->name('krs.import.excel');
+
+Route::post(
+    '/user/import-excel',
+    [UserController::class,'importExcel']
+)->name('users.import.excel');

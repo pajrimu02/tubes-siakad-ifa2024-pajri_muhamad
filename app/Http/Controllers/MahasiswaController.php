@@ -14,13 +14,13 @@ class MahasiswaController extends Controller
                             ->latest()
                             ->paginate(15);
 
-            return view('mahasiswa.index', compact('mahasiswas'));
+            return view('admin.mahasiswa.index', compact('mahasiswas'));
         }
 
     public function create()
     {
         $users = User::all();
-        return view('mahasiswa.create', compact('users'));
+        return view('admin.mahasiswa.create', compact('users'));
     }
 
     public function store(Request $request)
@@ -44,7 +44,7 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::findOrFail($id);
         $users = User::all();
 
-        return view('mahasiswa.edit', compact('mahasiswa', 'users'));
+        return view('admin.mahasiswa.edit', compact('mahasiswa', 'users'));
     }
 
     public function update(Request $request, $id)
@@ -60,7 +60,7 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::findOrFail($id);
         $mahasiswa->update($request->all());
 
-        return redirect()->route('mahasiswa.index')
+        return redirect()->route('admin.mahasiswa.index')
             ->with('success', 'Mahasiswa berhasil diupdate');
     }
 
@@ -68,7 +68,7 @@ class MahasiswaController extends Controller
     {
         Mahasiswa::destroy($id);
 
-        return redirect()->route('mahasiswa.index')
+        return redirect()->route('admin.mahasiswa.index')
             ->with('success', 'Mahasiswa berhasil dihapus');
     }
 }

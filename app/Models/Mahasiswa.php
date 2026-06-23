@@ -28,4 +28,14 @@ class Mahasiswa extends Model
     {
         return $this->hasMany(Krs::class);
     }
+
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class);
+    }
+
+    public function nilai()
+{
+    return $this->hasMany(Nilai::class);
+}
 }

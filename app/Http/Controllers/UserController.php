@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MataKuliah;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
-class MataKuliahController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       $matakuliahs = MataKuliah::
-                        latest()->
-                        paginate(15);
+        $users = User::latest()->paginate(15);
 
-            return view('admin.matkul.index', compact('matakuliahs'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -24,7 +23,9 @@ class MataKuliahController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -38,7 +39,7 @@ class MataKuliahController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MataKuliah $mataKuliah)
+    public function show(string $id)
     {
         //
     }
@@ -46,7 +47,7 @@ class MataKuliahController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MataKuliah $mataKuliah)
+    public function edit(string $id)
     {
         //
     }
@@ -54,7 +55,7 @@ class MataKuliahController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, MataKuliah $mataKuliah)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -62,7 +63,7 @@ class MataKuliahController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MataKuliah $mataKuliah)
+    public function destroy(string $id)
     {
         //
     }

@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -9,12 +8,7 @@ class RoleSeeder extends Seeder
 {
     public function run(): void
     {
-        Role::firstOrCreate([
-            'name' => 'admin'
-        ]);
-
-        Role::firstOrCreate([
-            'name' => 'mahasiswa'
-        ]);
+        Role::firstOrCreate(['name' => 'admin']);
+        Role::firstOrCreate(['name' => 'mahasiswa']);
     }
 }
