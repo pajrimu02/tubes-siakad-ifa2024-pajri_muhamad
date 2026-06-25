@@ -275,11 +275,11 @@
                         <td>
                             <div class="mk-wrap">
                                 <i class="fa-solid fa-book-open-reader"></i>
-                                <span class="mk-name">{{ $n->jadwal->mataKuliah->nama_mk ?? '-' }}</span>
+                                <span class="mk-name">{{ $n->matakuliah->nama_mk ?? '-' }}</span>
                             </div>
                         </td>
                         <td>
-                            <span class="sks-badge">{{ $n->jadwal->mataKuliah->sks ?? '-' }}</span>
+                            <span class="sks-badge">{{ $n->matakuliah->sks ?? '-' }}</span>
                         </td>
                         <td>
                             <div class="score-wrap">

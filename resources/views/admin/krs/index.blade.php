@@ -335,7 +335,7 @@
                             </div>
                         </td>
 
-                        <td>{{ $k->mahasiswa->dosenWali->nama ?? '-' }}</td>
+                        <td>{{ $k->jadwal->dosen->nama ?? '-' }}</td>
 
                         <td>
                             <span style="font-weight:500;">
