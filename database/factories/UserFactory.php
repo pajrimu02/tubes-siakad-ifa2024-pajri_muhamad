@@ -13,33 +13,46 @@ use Illuminate\Support\Str;
 class UserFactory extends Factory
 {
     /**
-     * The current password being used by the factory.
+     * Default password reusable
      */
-    protected static ?string $password;
+    protected static ?string $password = null;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
+        $faker = \Faker\Factory::create('id_ID');
+
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            // nama Indonesia
+            'name' => $faker->name(),
+
+            // email tetap safe + unik
+            'email' => $faker->unique()->safeEmail(),
+
             'email_verified_at' => now(),
+
             'password' => static::$password ??= Hash::make('password'),
+
             'remember_token' => Str::random(10),
         ];
     }
 
     /**
-     * Indicate that the model's email address should be unverified.
+     * User belum verifikasi email
      */
     public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * State khusus untuk user mahasiswa (opsional tapi keren)
+     */
+    public function mahasiswa(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'name' => fake()->name(),
         ]);
     }
 }

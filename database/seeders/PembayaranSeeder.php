@@ -1,32 +1,22 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\Pembayaran;
-use App\Models\Mahasiswa;
+
 use Illuminate\Database\Seeder;
+use App\Models\Pembayaran;
 
 class PembayaranSeeder extends Seeder
 {
     public function run(): void
     {
-        $mhs = Mahasiswa::first();
-
-        if ($mhs) {
-            Pembayaran::create([
-                'mahasiswa_id' => $mhs->id,
-                'semester' => '1',
-                'tagihan' => 2500000,
-                'status' => 'lunas',
-                'tanggal_bayar' => now(),
-            ]);
-
-            Pembayaran::create([
-                'mahasiswa_id' => $mhs->id,
-                'semester' => '2',
-                'tagihan' => 2500000,
-                'status' => 'belum_lunas',
-                'tanggal_bayar' => null,
-            ]);
+        // cek data mahasiswa dulu
+        if (\App\Models\Mahasiswa::count() == 0) {
+            return;
         }
+
+        // generate banyak data pembayaran otomatis
+        Pembayaran::factory()
+            ->count(30)
+            ->create();
     }
 }
