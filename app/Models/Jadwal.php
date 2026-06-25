@@ -33,4 +33,10 @@ class Jadwal extends Model
     {
         return $this->hasMany(Krs::class);
     }
+
+    // 🔥 TAMBAHAN AMAN (biar filtering gampang nanti)
+    public function scopeKelas($query, $kelas)
+    {
+        return $query->where('kelas', $kelas);
+    }
 }

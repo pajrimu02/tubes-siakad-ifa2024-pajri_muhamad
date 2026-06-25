@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         // role mahasiswa
         Role::firstOrCreate(['name' => 'mahasiswa']);
 
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 500; $i++) {
 
             // 1 user = 1 mahasiswa (WAJIB sinkron)
             $user = User::create([

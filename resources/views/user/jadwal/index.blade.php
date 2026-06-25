@@ -254,7 +254,7 @@
                         <th>Jam</th>
                         <th>Mata Kuliah</th>
                         <th>SKS</th>
-                        <th>Kelas</th>
+                        <th>Ruangan</th>
                         <th>Dosen</th>
                     </tr>
                 </thead>
@@ -297,7 +297,7 @@
                             <span class="sks-badge">{{ $j->mataKuliah->sks ?? '-' }}</span>
                         </td>
                         <td>
-                            <span class="kelas-badge">{{ $j->kelas }}</span>
+                            <span class="kelas-badge">{{ $j->ruangan }}</span>
                         </td>
                         <td>
                             <div class="dosen-wrap">

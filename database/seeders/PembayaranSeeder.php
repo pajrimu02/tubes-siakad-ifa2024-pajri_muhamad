@@ -16,7 +16,7 @@ class PembayaranSeeder extends Seeder
 
         // generate banyak data pembayaran otomatis
         Pembayaran::factory()
-            ->count(30)
+            ->count(50)
             ->create();
     }
 }

@@ -126,10 +126,8 @@ require __DIR__.'/auth.php';
 |--------------------------------------------------------------------------
 */
 
-Route::get(
-    '/mahasiswa/export-excel',
-    [MahasiswaController::class,'exportExcel']
-    )->name('mahasiswa.export.excel');
+Route::get('mahasiswa/export/excel',[MahasiswaController::class, 'exportExcel'])
+     ->name('mahasiswa.export.excel');
 
 Route::get(
     '/dosen/export-excel',

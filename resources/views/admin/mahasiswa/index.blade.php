@@ -3,25 +3,14 @@
 @push('styles')
 <style>
     .btn-modern {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        padding: 9px 16px;
-        border-radius: 10px;
-        font-size: 13px;
-        font-weight: 500;
-        border: none;
-        cursor: pointer;
-        text-decoration: none;
+        display: inline-flex; align-items: center; gap: 7px;
+        padding: 9px 16px; border-radius: 10px;
+        font-size: 13px; font-weight: 500; border: none;
+        cursor: pointer; text-decoration: none;
         transition: all 0.18s ease;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        color: #fff;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08); color: #fff;
     }
-    .btn-modern:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 5px 16px rgba(0,0,0,0.14);
-        color: #fff;
-    }
+    .btn-modern:hover { transform: translateY(-1px); box-shadow: 0 5px 16px rgba(0,0,0,0.14); color: #fff; }
     .btn-add    { background: linear-gradient(135deg,#6366f1,#4f46e5); }
     .btn-export { background: linear-gradient(135deg,#22c55e,#16a34a); }
     .btn-import { background: linear-gradient(135deg,#0ea5e9,#0284c7); }
@@ -30,38 +19,24 @@
     .search-wrap { position: relative; }
     .search-wrap .search-ico {
         position: absolute; left: 12px; top: 50%;
-        transform: translateY(-50%);
-        color: #94a3b8; font-size: 13px; pointer-events: none;
+        transform: translateY(-50%); color: #94a3b8; font-size: 13px; pointer-events: none;
     }
     .search-wrap input {
-        padding: 9px 16px 9px 34px;
-        border-radius: 10px;
-        border: 1.5px solid #e2e8f0;
-        width: 280px; outline: none; font-size: 13.5px;
+        padding: 9px 16px 9px 34px; border-radius: 10px;
+        border: 1.5px solid #e2e8f0; width: 280px;
+        outline: none; font-size: 13.5px;
         transition: border 0.18s, box-shadow 0.18s;
     }
-    .search-wrap input:focus {
-        border-color: #6366f1;
-        box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
-    }
+    .search-wrap input:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
 
     /* FILTER BAR */
     .filter-bar {
-        background: #fff;
-        border-radius: 14px;
-        padding: 13px 18px;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-        border: 1px solid #f1f5f9;
+        background: #fff; border-radius: 14px; padding: 13px 18px;
+        margin-bottom: 20px; display: flex; align-items: center;
+        gap: 10px; flex-wrap: wrap;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.06); border: 1px solid #f1f5f9;
     }
-    .filter-label {
-        font-size: 12px; font-weight: 700; color: #94a3b8;
-        text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap;
-    }
+    .filter-label { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
     .filter-divider { width: 1px; height: 22px; background: #e2e8f0; margin: 0 2px; }
     .filter-chip {
         display: inline-flex; align-items: center; gap: 6px;
@@ -69,52 +44,42 @@
         border: 1.5px solid #e2e8f0; background: #fff; color: #64748b;
         text-decoration: none; transition: all 0.18s ease; white-space: nowrap;
     }
-    .filter-chip:hover {
-        border-color: #6366f1; color: #6366f1;
-        background: #f5f3ff; transform: translateY(-1px);
-    }
+    .filter-chip:hover { border-color: #6366f1; color: #6366f1; background: #f5f3ff; transform: translateY(-1px); }
     .filter-chip.active {
         background: linear-gradient(135deg,#6366f1,#4f46e5);
         border-color: transparent; color: #fff;
-        box-shadow: 0 4px 12px rgba(99,102,241,0.35);
-        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(99,102,241,0.35); transform: translateY(-1px);
     }
-    .chip-dot {
-        width: 6px; height: 6px; border-radius: 50%;
-        background: rgba(255,255,255,0.6); display: none;
-    }
+    .chip-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.6); display: none; }
     .filter-chip.active .chip-dot { display: block; }
 
+    /* ALERT */
+    .alert-success-custom {
+        display: flex; align-items: center; gap: 10px;
+        background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d;
+        border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; font-size: 13.5px;
+    }
+    .alert-error-custom {
+        display: flex; align-items: center; gap: 10px;
+        background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c;
+        border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; font-size: 13.5px;
+    }
+
     /* CARD */
-    .mhs-card {
-        border-radius: 16px;
-        border: 1px solid #f1f5f9;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-        overflow: hidden;
-    }
+    .mhs-card { border-radius: 16px; border: 1px solid #f1f5f9; box-shadow: 0 2px 12px rgba(0,0,0,0.06); overflow: hidden; }
     .mhs-card .card-header {
-        background: #fff;
-        border-bottom: 1px solid #f1f5f9;
-        padding: 15px 20px;
-        display: flex; align-items: center; justify-content: space-between;
+        background: #fff; border-bottom: 1px solid #f1f5f9;
+        padding: 15px 20px; display: flex; align-items: center; justify-content: space-between;
     }
-    .mhs-card .card-header h5 {
-        font-size: 15px; font-weight: 700; color: #1e293b;
-        margin: 0; display: flex; align-items: center; gap: 8px;
-    }
+    .mhs-card .card-header h5 { font-size: 15px; font-weight: 700; color: #1e293b; margin: 0; display: flex; align-items: center; gap: 8px; }
 
     /* TABLE */
     .table-modern thead th {
-        background: #f8fafc; color: #64748b;
-        font-size: 11.5px; font-weight: 700;
+        background: #f8fafc; color: #64748b; font-size: 11.5px; font-weight: 700;
         text-transform: uppercase; letter-spacing: 0.06em;
-        border-bottom: 2px solid #e2e8f0;
-        padding: 13px 16px; white-space: nowrap;
+        border-bottom: 2px solid #e2e8f0; padding: 13px 16px; white-space: nowrap;
     }
-    .table-modern tbody td {
-        padding: 13px 16px; font-size: 14px; color: #334155;
-        vertical-align: middle; border-bottom: 1px solid #f1f5f9;
-    }
+    .table-modern tbody td { padding: 13px 16px; font-size: 14px; color: #334155; vertical-align: middle; border-bottom: 1px solid #f1f5f9; }
     .table-modern tbody tr:hover td { background: #fafbff; }
     .table-modern tbody tr:last-child td { border-bottom: none; }
 
@@ -123,48 +88,23 @@
         width: 36px; height: 36px; border-radius: 50%;
         background: linear-gradient(135deg,#6366f1,#4f46e5);
         color: #fff; font-size: 13px; font-weight: 700;
-        display: inline-flex; align-items: center; justify-content: center;
-        flex-shrink: 0;
+        display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
 
     /* BADGES */
-    .badge-smt {
-        display: inline-flex; align-items: center;
-        padding: 3px 10px; border-radius: 999px;
-        font-size: 12px; font-weight: 600;
-        background: #ede9fe; color: #5b21b6;
-    }
-    .badge-angkatan {
-        display: inline-flex; align-items: center;
-        padding: 3px 10px; border-radius: 999px;
-        font-size: 12px; font-weight: 600;
-        background: #e0f2fe; color: #0369a1;
-    }
-    .badge-aktif {
-        display: inline-flex; align-items: center; gap: 5px;
-        padding: 3px 10px; border-radius: 999px;
-        font-size: 12px; font-weight: 600;
-        background: #dcfce7; color: #15803d;
-    }
-    .badge-nonaktif {
-        display: inline-flex; align-items: center; gap: 5px;
-        padding: 3px 10px; border-radius: 999px;
-        font-size: 12px; font-weight: 600;
-        background: #fee2e2; color: #b91c1c;
-    }
-    .status-dot {
-        width: 6px; height: 6px; border-radius: 50%;
-    }
-    .dot-aktif    { background: #16a34a; }
+    .badge-smt      { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: #ede9fe; color: #5b21b6; }
+    .badge-angkatan { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: #e0f2fe; color: #0369a1; }
+    .badge-aktif    { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: #dcfce7; color: #15803d; }
+    .badge-nonaktif { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: #fee2e2; color: #b91c1c; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .dot-aktif  { background: #16a34a; }
     .dot-nonaktif { background: #dc2626; }
 
     /* ACTION BUTTONS */
     .act-btn {
         display: inline-flex; align-items: center; gap: 5px;
-        padding: 5px 11px; border-radius: 7px;
-        font-size: 12.5px; font-weight: 500;
-        border: none; cursor: pointer; text-decoration: none;
-        transition: all 0.15s;
+        padding: 5px 11px; border-radius: 7px; font-size: 12.5px; font-weight: 500;
+        border: none; cursor: pointer; text-decoration: none; transition: all 0.15s;
     }
     .act-btn:hover { transform: translateY(-1px); opacity: 0.88; }
     .act-detail { background:#e0f2fe; color:#0369a1; }
@@ -175,11 +115,28 @@
     .empty-state { padding: 56px 20px; text-align: center; color: #94a3b8; }
     .empty-state i { font-size: 38px; margin-bottom: 12px; display: block; }
     .empty-state p { font-size: 14px; margin: 0; }
+
+    /* Search highlight */
+    mark { background: #fef08a; border-radius: 3px; padding: 0 2px; }
 </style>
 @endpush
 
 @section('content')
 <div class="container-fluid">
+
+    {{-- ── FLASH MESSAGES ── --}}
+    @if(session('success'))
+        <div class="alert-success-custom">
+            <i class="fa fa-check-circle"></i>
+            {{ session('success') }}
+        </div>
+    @endif
+    @if(session('error'))
+        <div class="alert-error-custom">
+            <i class="fa fa-exclamation-circle"></i>
+            {{ session('error') }}
+        </div>
+    @endif
 
     {{-- ── HEADER ROW ── --}}
     <div class="row mb-3 align-items-center">
@@ -195,12 +152,22 @@
                     <i class="fa fa-file-excel"></i> Export Excel
                 </a>
 
-                <form action="{{ route('mahasiswa.import.excel') }}"
-                      method="POST" enctype="multipart/form-data" class="d-inline">
+                {{-- Import: klik tombol → trigger input file → auto submit form --}}
+                <form id="importForm"
+                      action="{{ route('mahasiswa.import.excel') }}"
+                      method="POST"
+                      enctype="multipart/form-data"
+                      class="d-inline">
                     @csrf
-                    <input type="file" id="mhsFile" name="file" accept=".xlsx,.xls" hidden>
-                    <button type="button" class="btn-modern btn-import"
-                            onclick="document.getElementById('mhsFile').click();">
+                    <input type="file"
+                           id="mhsFile"
+                           name="file"
+                           accept=".xlsx,.xls"
+                           hidden
+                           onchange="this.form.submit()">
+                    <button type="button"
+                            class="btn-modern btn-import"
+                            onclick="document.getElementById('mhsFile').click()">
                         <i class="fa fa-upload"></i> Import Excel
                     </button>
                 </form>
@@ -209,11 +176,19 @@
         </div>
 
         <div class="col-md-6 d-flex justify-content-end mt-2 mt-md-0">
-            <div class="search-wrap">
-                <i class="fa fa-search search-ico"></i>
-                <input type="text" id="searchInput"
-                       placeholder="Cari nama / NIM...">
-            </div>
+            {{-- Search: ketik langsung filter via GET --}}
+            <form method="GET" action="{{ route('mahasiswa.index') }}" id="searchForm">
+                <input type="hidden" name="angkatan" value="{{ request('angkatan') }}">
+                <div class="search-wrap">
+                    <i class="fa fa-search search-ico"></i>
+                    <input type="text"
+                           name="search"
+                           id="searchInput"
+                           value="{{ request('search') }}"
+                           placeholder="Cari nama / NIM..."
+                           autocomplete="off">
+                </div>
+            </form>
         </div>
 
     </div>
@@ -223,13 +198,13 @@
         <span class="filter-label"><i class="fa fa-filter me-1"></i> Angkatan</span>
         <div class="filter-divider"></div>
 
-        <a href="{{ route('mahasiswa.index') }}"
+        <a href="{{ route('mahasiswa.index', ['search' => request('search')]) }}"
            class="filter-chip {{ !request('angkatan') ? 'active' : '' }}">
             <span class="chip-dot"></span> Semua
         </a>
 
         @foreach(range(date('Y'), date('Y') - 5) as $tahun)
-        <a href="{{ route('mahasiswa.index', ['angkatan' => $tahun]) }}"
+        <a href="{{ route('mahasiswa.index', ['angkatan' => $tahun, 'search' => request('search')]) }}"
            class="filter-chip {{ request('angkatan') == $tahun ? 'active' : '' }}">
             <span class="chip-dot"></span> {{ $tahun }}
         </a>
@@ -245,6 +220,11 @@
                 Data Mahasiswa
                 @if(request('angkatan'))
                     <span class="badge-angkatan ms-1">Angkatan {{ request('angkatan') }}</span>
+                @endif
+                @if(request('search'))
+                    <span class="badge-angkatan ms-1" style="background:#fef9c3;color:#92400e;">
+                        "{{ request('search') }}"
+                    </span>
                 @endif
             </h5>
             <small class="text-muted" style="font-size:13px;">
@@ -284,7 +264,7 @@
                                         {{ $m->nama ?? '-' }}
                                     </div>
                                     <div style="font-size:12px;color:#94a3b8;">
-                                        {{ $m->email ?? '' }}
+                                        {{ $m->user?->email ?? '' }}
                                     </div>
                                 </div>
                             </div>
@@ -298,14 +278,14 @@
                             </span>
                         </td>
 
-                        
-
                         <td>
                             <span class="badge-angkatan">{{ $m->angkatan ?? '-' }}</span>
                         </td>
 
                         <td>
-                            <span class="badge-smt">Smt {{ $m->semester ?? '-' }}</span>
+                            <span class="badge-smt">
+                                Semester {{ $m->krs->first()?->jadwal?->mataKuliah?->semester ?? '-' }}
+                            </span>
                         </td>
 
                         <td>
@@ -322,18 +302,14 @@
 
                         <td>
                             <div class="d-flex gap-1">
-                                <a href="{{ route('mahasiswa.show', $m->id) }}"
-                                   class="act-btn act-detail">
+                                <a href="{{ route('mahasiswa.show', $m->id) }}" class="act-btn act-detail">
                                     <i class="fa fa-eye"></i> Detail
                                 </a>
-                                <a href="{{ route('mahasiswa.edit', $m->id) }}"
-                                   class="act-btn act-edit">
+                                <a href="{{ route('mahasiswa.edit', $m->id) }}" class="act-btn act-edit">
                                     <i class="fa fa-pen"></i> Edit
                                 </a>
-                                <form action="{{ route('mahasiswa.destroy', $m->id) }}"
-                                      method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
+                                <form action="{{ route('mahasiswa.destroy', $m->id) }}" method="POST" class="d-inline">
+                                    @csrf @method('DELETE')
                                     <button class="act-btn act-delete"
                                             onclick="return confirm('Yakin hapus mahasiswa ini?')">
                                         <i class="fa fa-trash"></i> Hapus
@@ -345,10 +321,14 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="8">
+                        <td colspan="7">
                             <div class="empty-state">
                                 <i class="fa fa-users-slash"></i>
-                                <p>Tidak ada data mahasiswa{{ request('angkatan') ? ' angkatan '.request('angkatan') : '' }}</p>
+                                <p>
+                                    Tidak ada data mahasiswa
+                                    @if(request('search')) dengan kata kunci "{{ request('search') }}"@endif
+                                    @if(request('angkatan')) angkatan {{ request('angkatan') }}@endif
+                                </p>
                             </div>
                         </td>
                     </tr>
@@ -360,6 +340,7 @@
         </div>
 
         {{-- PAGINATION --}}
+        @if($mahasiswas->hasPages())
         <div class="d-flex justify-content-between align-items-center px-4 py-3"
              style="border-top:1px solid #f1f5f9;">
             <small class="text-muted">
@@ -368,8 +349,23 @@
             </small>
             {{ $mahasiswas->links('pagination::bootstrap-5') }}
         </div>
+        @endif
 
     </div>
 
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    // Search: debounce 400ms baru submit form
+    const searchInput = document.getElementById('searchInput');
+    let searchTimer;
+    searchInput?.addEventListener('input', () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+            document.getElementById('searchForm').submit();
+        }, 400);
+    });
+</script>
+@endpush

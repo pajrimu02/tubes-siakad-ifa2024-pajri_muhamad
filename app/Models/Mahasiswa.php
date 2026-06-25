@@ -17,6 +17,7 @@ class Mahasiswa extends Model
         'alamat',
         'no_hp',
         'angkatan',
+        'semester',
     ];
 
     public function user()

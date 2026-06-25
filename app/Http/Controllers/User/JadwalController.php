@@ -9,9 +9,18 @@ class JadwalController extends Controller
 {
     public function index()
     {
+        $user = auth()->user();
+
+        // 🔥 SAFE CHECK
+        $mahasiswa = $user->mahasiswa;
+
+        if (!$mahasiswa) {
+            abort(403, 'Akun ini belum terhubung dengan data mahasiswa');
+        }
+
         $jadwal = Jadwal::with(['mataKuliah', 'dosen'])
-            ->whereHas('krs', function ($q) {
-                $q->where('mahasiswa_id', auth()->user()->mahasiswa->id);
+            ->whereHas('krs', function ($q) use ($mahasiswa) {
+                $q->where('mahasiswa_id', $mahasiswa->id);
             })
             ->get();
 
