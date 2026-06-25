@@ -268,7 +268,6 @@
                 </div>
             </div>
         </div>
-
         <div class="table-responsive">
             <table class="table table-krs mb-0">
                 <thead>
@@ -282,6 +281,7 @@
                     </tr>
                 </thead>
                 <tbody>
+              
                 @forelse($krs as $key => $k)
                     <tr style="animation-delay:{{ $key * 0.04 }}s">
                         <td class="text-muted">{{ $key + 1 }}</td>
