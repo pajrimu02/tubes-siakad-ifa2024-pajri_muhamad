@@ -53,9 +53,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth'])->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('profil',        [ProfileController::class, 'index'])->name('profil.index');
+    Route::get('profil/edit',   [ProfileController::class, 'edit'])->name('profil.edit');
+    Route::put('profil/update', [ProfileController::class, 'update'])->name('profil.update');
 });
 
 /*
@@ -137,6 +137,8 @@ Route::get('jadwal/export/excel',  [JadwalController::class, 'exportExcel'])->na
 
 Route::get('krs-export',  [KrsController::class, 'export'])->name('krs.export');
 
+Route::get('nilai-export',  [NilaiadminController::class, 'export'])->name('nilai.export');
+
 Route::get(
     '/user/export-excel',
     [UserController::class,'exportExcel']
@@ -157,6 +159,8 @@ Route::post('matakuliah/import/excel', [MataKuliahController::class, 'importExce
 Route::post('jadwal/import/excel', [JadwalController::class, 'importExcel'])->name('jadwal.import.excel');
 
 Route::post('krs-import', [KrsController::class, 'import'])->name('krs.import');
+
+Route::post('nilai-import', [NilaiadminController::class, 'import'])->name('nilai.import');
 
 Route::post(
     '/user/import-excel',

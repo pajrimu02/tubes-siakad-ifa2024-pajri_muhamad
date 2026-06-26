@@ -2,59 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
-    public function edit(Request $request): View
+    public function index()
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        $user = Auth::user();
+        return view('profile.index', compact('user'));
     }
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function edit()
     {
-        $request->user()->fill($request->validated());
+        $user = Auth::user();
+        return view('profile.edit', compact('user'));
+    }
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+
+        $rules = [
+            'name'  => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+        ];
+
+        // Validasi password hanya jika diisi
+        if ($request->filled('password')) {
+            $rules['password']              = 'min:8|confirmed';
+            $rules['password_confirmation'] = 'required';
         }
 
-        $request->user()->save();
+        $data = $request->validate($rules);
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
-    }
+        $user->name  = $data['name'];
+        $user->email = $data['email'];
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
 
-        $user = $request->user();
+        $user->save();
 
-        Auth::logout();
-
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+        return redirect()->route('profil.index')->with('success', 'Profil berhasil diperbarui.');
     }
 }

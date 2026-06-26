@@ -246,14 +246,24 @@
 <div class="content">
 
     <!-- TOP BAR -->
-    <div class="topbar">
-        <h5 class="mb-0">Dashboard</h5>
+<div class="topbar">
+    <h5 class="mb-0">Dashboard</h5>
 
-        <div class="profile">
-            <span>{{ auth()->user()->name }}</span>
-            <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name }}" alt="profile">
-        </div>
+    <div class="profile">
+        <span>{{ auth()->user()->name }}</span>
+        <a href="{{ route('profil.index') }}" class="avatar-link" title="Lihat Profil">
+            <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=6366f1&color=fff&bold=true"
+                 alt="profile">
+        </a>
     </div>
+</div>
+
+{{-- Tambahkan style ini di topbar atau di layouts/admin.blade.php --}}
+<style>
+.avatar-link { display: inline-block; border-radius: 50%; transition: box-shadow .18s, transform .18s; }
+.avatar-link:hover { box-shadow: 0 0 0 3px rgba(99,102,241,0.35); transform: scale(1.07); }
+.avatar-link img  { display: block; border-radius: 50%; }
+</style>
 
     @yield('content')
 
