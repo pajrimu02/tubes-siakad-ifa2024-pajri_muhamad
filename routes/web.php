@@ -72,7 +72,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('matakuliah', MatakuliahController::class);
     Route::resource('jadwal', JadwalController::class);
     Route::resource('nilai', NilaiadminController::class);
-    Route::resource('krs', KrsController::class);
+    Route::resource('krs', KrsController::class)->parameters(['krs' => 'krs']);
     Route::resource('users', UserController::class);
 
 });
@@ -133,10 +133,7 @@ Route::get('dosen/export/excel',  [DosenController::class, 'exportExcel'])->name
 
 Route::get('matakuliah/export/excel',  [MataKuliahController::class, 'exportExcel'])->name('matakuliah.export.excel');
 
-Route::get(
-    '/jadwal/export-excel',
-    [JadwalController::class,'exportExcel']
-    )->name('jadwal.export.excel');
+Route::get('jadwal/export/excel',  [JadwalController::class, 'exportExcel'])->name('jadwal.export.excel');
 
 Route::get('krs-export',  [KrsController::class, 'export'])->name('krs.export');
 
@@ -157,10 +154,7 @@ Route::post('dosen/import/excel', [DosenController::class, 'importExcel'])->name
 
 Route::post('matakuliah/import/excel', [MataKuliahController::class, 'importExcel'])->name('matakuliah.import.excel');
 
-Route::post(
-    '/jadwal/import-excel',
-    [JadwalController::class,'importExcel']
-)->name('jadwal.import.excel');
+Route::post('jadwal/import/excel', [JadwalController::class, 'importExcel'])->name('jadwal.import.excel');
 
 Route::post('krs-import', [KrsController::class, 'import'])->name('krs.import');
 
