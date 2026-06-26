@@ -131,20 +131,14 @@ Route::get('mahasiswa/export/excel',[MahasiswaController::class, 'exportExcel'])
 
 Route::get('dosen/export/excel',  [DosenController::class, 'exportExcel'])->name('dosen.export.excel');
 
-Route::get(
-    '/matakuliah/export-excel',
-    [MatakuliahController::class,'exportExcel']
-    )->name('matakuliah.export.excel');
+Route::get('matakuliah/export/excel',  [MataKuliahController::class, 'exportExcel'])->name('matakuliah.export.excel');
 
 Route::get(
     '/jadwal/export-excel',
     [JadwalController::class,'exportExcel']
     )->name('jadwal.export.excel');
 
-Route::get(
-    '/krs/export-excel',
-    [KrsController::class,'exportExcel']
-    )->name('krs.export.excel');
+Route::get('krs-export',  [KrsController::class, 'export'])->name('krs.export');
 
 Route::get(
     '/user/export-excel',
@@ -161,20 +155,14 @@ Route::post('mahasiswa/import/excel',[MahasiswaController::class, 'importExcel']
 
 Route::post('dosen/import/excel', [DosenController::class, 'importExcel'])->name('dosen.import.excel');
 
-Route::post(
-    '/matakuliah/import-excel',
-    [MatakuliahController::class,'importExcel']
-)->name('matakuliah.import.excel');
+Route::post('matakuliah/import/excel', [MataKuliahController::class, 'importExcel'])->name('matakuliah.import.excel');
 
 Route::post(
     '/jadwal/import-excel',
     [JadwalController::class,'importExcel']
 )->name('jadwal.import.excel');
 
-Route::post(
-    '/krs/import-excel',
-    [KrsController::class,'importExcel']
-)->name('krs.import.excel');
+Route::post('krs-import', [KrsController::class, 'import'])->name('krs.import');
 
 Route::post(
     '/user/import-excel',

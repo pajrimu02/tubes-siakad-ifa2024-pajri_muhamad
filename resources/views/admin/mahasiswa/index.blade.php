@@ -176,20 +176,42 @@
         </div>
 
         <div class="col-md-6 d-flex justify-content-end mt-2 mt-md-0">
-            {{-- Search: ketik langsung filter via GET --}}
-            <form method="GET" action="{{ route('mahasiswa.index') }}" id="searchForm">
-                <input type="hidden" name="angkatan" value="{{ request('angkatan') }}">
-                <div class="search-wrap">
-                    <i class="fa fa-search search-ico"></i>
-                    <input type="text"
-                           name="search"
-                           id="searchInput"
-                           value="{{ request('search') }}"
-                           placeholder="Cari nama / NIM..."
-                           autocomplete="off">
-                </div>
-            </form>
+
+    {{-- SEARCH dengan tombol Search & Clear --}}
+    <form method="GET" action="{{ route('mahasiswa.index') }}" class="d-flex gap-2">
+
+        {{-- Supaya filter angkatan tidak hilang --}}
+        <input type="hidden" name="angkatan" value="{{ request('angkatan') }}">
+
+        <div class="search-wrap">
+            <i class="fa fa-search search-ico"></i>
+
+            <input type="text"
+                   name="search"
+                   value="{{ request('search') }}"
+                   placeholder="Cari Nama / NIM..."
+                   autocomplete="off">
         </div>
+
+        {{-- Tombol Search --}}
+        <button type="submit"
+                class="btn-modern btn-add"
+                style="padding:9px 14px;">
+            <i class="fa fa-search"></i>
+        </button>
+
+        {{-- Tombol Reset --}}
+        @if(request('search'))
+            <a href="{{ route('mahasiswa.index', ['angkatan' => request('angkatan')]) }}"
+               class="btn-modern"
+               style="background:#94a3b8;padding:9px 14px;">
+                <i class="fa fa-times"></i>
+            </a>
+        @endif
+
+    </form>
+
+</div>
 
     </div>
 

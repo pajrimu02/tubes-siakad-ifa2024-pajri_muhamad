@@ -86,17 +86,40 @@
             </div>
         </div>
         <div class="col-md-6 d-flex justify-content-end mt-2 mt-md-0">
-            <form method="GET" action="{{ route('matakuliah.index') }}" id="searchForm">
-                <input type="hidden" name="semester" value="{{ request('semester') }}">
-                <div class="search-wrap">
-                    <i class="fa fa-search search-ico"></i>
-                    <input type="text" name="search" id="searchInput"
-                           value="{{ request('search') }}"
-                           placeholder="Cari kode / nama matakuliah..."
-                           autocomplete="off">
-                </div>
-            </form>
+
+    <form method="GET" action="{{ route('matakuliah.index') }}" class="d-flex gap-2">
+
+        {{-- keep filter semester --}}
+        @if(request('semester'))
+            <input type="hidden" name="semester" value="{{ request('semester') }}">
+        @endif
+
+        <div class="search-wrap">
+            <i class="fa fa-search search-ico"></i>
+            <input type="text"
+                   name="search"
+                   value="{{ request('search') }}"
+                   placeholder="Cari kode / nama matakuliah..."
+                   autocomplete="off">
         </div>
+
+        {{-- tombol search --}}
+        <button type="submit" class="btn-modern btn-add" style="padding:9px 14px;">
+            <i class="fa fa-search"></i>
+        </button>
+
+        {{-- tombol reset (X) --}}
+        @if(request('search'))
+            <a href="{{ route('matakuliah.index', ['semester' => request('semester')]) }}"
+               class="btn-modern"
+               style="background:#94a3b8;padding:9px 14px;">
+                <i class="fa fa-times"></i>
+            </a>
+        @endif
+
+    </form>
+
+</div>
     </div>
 
     {{-- Filter Semester --}}

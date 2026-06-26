@@ -124,16 +124,38 @@
             </div>
         </div>
         <div class="col-md-6 d-flex justify-content-end mt-2 mt-md-0">
-            <form method="GET" action="{{ route('dosen.index') }}" id="searchForm">
-                <div class="search-wrap">
-                    <i class="fa fa-search search-ico"></i>
-                    <input type="text" name="search" id="searchInput"
-                           value="{{ request('search') }}"
-                           placeholder="Cari nama / NIDN / email..."
-                           autocomplete="off">
-                </div>
-            </form>
+
+    <form method="GET" action="{{ route('dosen.index') }}" class="d-flex gap-2">
+
+        <div class="search-wrap">
+            <i class="fa fa-search search-ico"></i>
+
+            <input type="text"
+                   name="search"
+                   value="{{ request('search') }}"
+                   placeholder="Cari Nama / NIDN / Email..."
+                   autocomplete="off">
         </div>
+
+        {{-- Tombol Search --}}
+        <button type="submit"
+                class="btn-modern btn-add"
+                style="padding:9px 14px;">
+            <i class="fa fa-search"></i>
+        </button>
+
+        {{-- Tombol Reset --}}
+        @if(request('search'))
+            <a href="{{ route('dosen.index') }}"
+               class="btn-modern text-white"
+               style="background:#94a3b8;padding:9px 14px;">
+                <i class="fa fa-times"></i>
+            </a>
+        @endif
+
+    </form>
+
+</div>
     </div>
 
     {{-- Table Card --}}

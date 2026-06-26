@@ -213,13 +213,36 @@
             </div>
         </div>
 
-        <div class="col-md-6 d-flex justify-content-end mt-2 mt-md-0">
-            <div class="search-wrap">
-                <i class="fa fa-search search-ico"></i>
-                <input type="text" id="searchInput"
-                       placeholder="Cari mahasiswa / matakuliah...">
-            </div>
+       <div class="col-md-6 d-flex justify-content-end mt-2 mt-md-0">
+
+    <form method="GET" action="{{ route('nilai.index') }}" class="d-flex gap-2">
+
+        <div class="search-wrap">
+            <i class="fa fa-search search-ico"></i>
+            <input type="text"
+                   name="search"
+                   value="{{ request('search') }}"
+                   placeholder="Cari mahasiswa / matakuliah / nilai..."
+                   autocomplete="off">
         </div>
+
+        {{-- tombol search --}}
+        <button type="submit" class="btn-modern btn-add" style="padding:9px 14px;">
+            <i class="fa fa-search"></i>
+        </button>
+
+        {{-- tombol reset --}}
+        @if(request('search'))
+            <a href="{{ route('nilai.index') }}"
+               class="btn-modern"
+               style="background:#94a3b8;padding:9px 14px;">
+                <i class="fa fa-times"></i>
+            </a>
+        @endif
+
+    </form>
+
+</div>
 
     </div>
 
@@ -361,6 +384,7 @@
                                     <button class="act-btn act-delete"
                                             onclick="return confirm('Yakin hapus nilai ini?')">
                                         <i class="fa fa-trash"></i> Hapus
+                                        
                                     </button>
                                 </form>
                             </div>

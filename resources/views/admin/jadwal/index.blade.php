@@ -247,11 +247,35 @@
         </div>
 
         <div class="col-md-6 d-flex justify-content-end mt-2 mt-md-0">
-            <div class="search-wrap">
-                <i class="fa fa-search search-ico"></i>
-                <input type="text" id="searchInput" placeholder="Cari jadwal...">
-            </div>
+
+    <form method="GET" action="{{ route('jadwal.index') }}" class="d-flex gap-2">
+
+        <div class="search-wrap">
+            <i class="fa fa-search search-ico"></i>
+            <input type="text"
+                   name="search"
+                   value="{{ request('search') }}"
+                   placeholder="Cari jadwal (mk / dosen / hari)..."
+                   autocomplete="off">
         </div>
+
+        {{-- tombol search --}}
+        <button type="submit" class="btn-modern btn-add" style="padding:9px 14px;">
+            <i class="fa fa-search"></i>
+        </button>
+
+        {{-- tombol reset --}}
+        @if(request('search'))
+            <a href="{{ route('jadwal.index') }}"
+               class="btn-modern text-white"
+               style="background:#94a3b8;padding:9px 14px;">
+                <i class="fa fa-times"></i>
+            </a>
+        @endif
+
+    </form>
+
+</div>
 
     </div>
 
@@ -301,6 +325,7 @@
                             <th width="56">No</th>
                             <th>Nama Matakuliah</th>
                             <th>Hari</th>
+                            <th>Kelas</th>
                             <th>Ruangan</th>
                             <th width="180">Aksi</th>
                         </tr>
@@ -312,6 +337,7 @@
                         <td class="text-muted">{{ $jadwal->firstItem() + $key }}</td>
                         <td><span style="font-weight:500;color:#1e293b;">{{ $j->mataKuliah->nama_mk ?? '-' }}</span></td>
                         <td>{{ $j->hari }}</td>
+                        <td>{{ $j->kelas }}</td>
                         <td>{{ $j->ruangan }}</td>
                         <td>
                             <div class="d-flex gap-1">
