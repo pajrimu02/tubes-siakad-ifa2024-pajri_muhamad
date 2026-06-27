@@ -171,6 +171,51 @@
                 justify-content:center;
             }
         }
+
+        /* MOBILE SMALL */
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 0;
+        overflow: hidden;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .profile {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* EXTRA SMALL (HP kecil) */
+@media (max-width: 480px) {
+
+    .topbar {
+        padding: 12px 15px;
+    }
+
+    .welcome h5 {
+        font-size: 16px;
+    }
+
+    .profile-info h6 {
+        font-size: 14px;
+    }
+
+    .card-modern {
+        border-radius: 12px;
+    }
+}
     </style>
 
     @stack('styles')
