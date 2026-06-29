@@ -4,7 +4,7 @@
 
 **Nama &nbsp;&nbsp;:** Pajri Muhamad  
 **NPM &nbsp;&nbsp;&nbsp;:** 5520124025  
-**Link &nbsp;&nbsp;&nbsp;:** _(belum tersedia)_
+**Link &nbsp;&nbsp;&nbsp;:** https://pajri.ifalgorithm24.web.id/
 
 ---
 
